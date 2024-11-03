@@ -10,24 +10,24 @@ export default function Resume() {
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white text-gray-800 font-serif">
       <header className="mb-8 border-b-2 border-navy pb-4">
-        <h1 className="text-4xl font-sans font-bold text-navy">John Doe</h1>
+        <h1 className="text-4xl font-sans font-bold text-navy">Bhanu Sandeep Reddy Chirra</h1>
         <h2 className="text-xl text-gray-600">Verification and Validation Engineer</h2>
         <div className="flex flex-wrap gap-4 mt-2 text-sm">
-          <a href="tel:+11234567890" className="flex items-center hover:text-navy transition-colors">
+          <a href="tel:+4917643882710" className="flex items-center hover:text-navy transition-colors">
             <Phone size={16} className="mr-2 text-navy" />
-            (123) 456-7890
+            (176) 4388-2710
           </a>
-          <a href="mailto:john.doe@email.com" className="flex items-center hover:text-navy transition-colors">
+          <a href="mailto:bhanusandeepreddy@gmail.com" className="flex items-center hover:text-navy transition-colors">
             <Mail size={16} className="mr-2 text-navy" />
-            john.doe@email.com
+            bhanusandeepreddy@gmail.com
           </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=San+Francisco,+CA" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-navy transition-colors">
+          <a href="https://www.google.com/maps/search/?api=1&query=Frankfurt,DE" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-navy transition-colors">
             <MapPin size={16} className="mr-2 text-navy" />
-            San Francisco, CA
+            Frankfurt, DE
           </a>
-          <a href="https://www.linkedin.com/in/johndoe" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-navy transition-colors">
+          <a href="https://www.linkedin.com/in/bhanusandeepreddy" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-navy transition-colors">
             <Linkedin size={16} className="mr-2 text-navy" />
-            linkedin.com/in/johndoe
+            linkedin.com/in/bhanusandeepreddy
           </a>
         </div>
       </header>
