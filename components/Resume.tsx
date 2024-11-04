@@ -37,8 +37,8 @@ export default function Resume() {
           <section className="mb-6">
             <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">Skills</h3>
             <div className="space-y-2">
-              <SkillCategory name="Programming Languages" skills={["Python", "C++", "Java", "SQL"]} />
-              <SkillCategory name="Testing Tools" skills={["Selenium", "JUnit", "TestNG", "Cucumber"]} />
+              <SkillCategory name="Programming Languages" skills={["Python", "Matlab", "Java", "SQL"]} />
+              <SkillCategory name="Testing Tools" skills={["ecu.test", "vTESTstudio", "TestNG", "Cucumber"]} />
               <SkillCategory name="Methodologies" skills={["Agile", "TDD", "BDD", "CI/CD"]} />
             </div>
           </section>
@@ -55,30 +55,33 @@ export default function Resume() {
           <section>
             <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">Languages</h3>
             <ul className="list-disc list-inside">
-              <li>English (Native)</li>
-              <li>Spanish (Fluent)</li>
-              <li>Mandarin (Intermediate)</li>
+              <li>Telugu (Native)</li>
+              <li>English (Fluent)</li>
+              <li>German (Intermediate)</li>
             </ul>
           </section>
         </div>
 
         <div className="md:col-span-2">
-          <div className="flex space-x-2 mb-4">
+        <div className="flex space-x-2 mb-4">
             <Button
               variant={activeSection === 'experience' ? 'default' : 'outline'}
               onClick={() => setActiveSection('experience')}
+              className={activeSection === 'experience' ? 'bg-black text-white' : ''}
             >
               Experience
             </Button>
             <Button
               variant={activeSection === 'education' ? 'default' : 'outline'}
               onClick={() => setActiveSection('education')}
+              className={activeSection === 'education' ? 'bg-black text-white' : ''}
             >
               Educational Background
             </Button>
             <Button
               variant={activeSection === 'projects' ? 'default' : 'outline'}
               onClick={() => setActiveSection('projects')}
+              className={activeSection === 'projects' ? 'bg-black text-white' : ''}
             >
               Projects
             </Button>
