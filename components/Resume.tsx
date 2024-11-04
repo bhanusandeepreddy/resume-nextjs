@@ -43,12 +43,21 @@ export default function Resume() {
             </div>
           </section>
 
-          <section>
+          <section className="mb-4">
             <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">Certifications</h3>
             <ul className="list-disc list-inside">
               <li>ISTQB Certified Tester</li>
               <li>AWS Certified Developer</li>
               <li>Scrum Master Certification</li>
+            </ul>
+          </section>
+          
+          <section>
+            <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">Languages</h3>
+            <ul className="list-disc list-inside">
+              <li>English (Native)</li>
+              <li>Spanish (Fluent)</li>
+              <li>Mandarin (Intermediate)</li>
             </ul>
           </section>
         </div>
@@ -157,6 +166,9 @@ export default function Resume() {
           )}
         </div>
       </div>
+      <footer className="mt-8 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} Bhanu Sandeep Reddy Chirra. All rights reserved.
+      </footer>
     </div>
   )
 }
