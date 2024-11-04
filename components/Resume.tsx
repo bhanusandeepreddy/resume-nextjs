@@ -25,9 +25,9 @@ export default function Resume() {
             <MapPin size={16} className="mr-2 text-navy" />
             Frankfurt, DE
           </a>
-          <a href="https://www.linkedin.com/in/bhanusandeepreddy" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-navy transition-colors">
+          <a href="https://www.linkedin.com/in/bhanusandeep" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-navy transition-colors">
             <Linkedin size={16} className="mr-2 text-navy" />
-            linkedin.com/in/bhanusandeepreddy
+            linkedin.com/in/bhanusandeep
           </a>
         </div>
       </header>
