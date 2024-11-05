@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 const translations = {
   en: {
     name: "Bhanu Sandeep Reddy Chirra",
-    title: "Verification and Validation Engineer",
+    title: "Verification and Validation Test Engineer",
     experience: "Experience",
     education: "Educational Background",
     projects: "Projects",
@@ -18,10 +18,10 @@ const translations = {
     testingTools: "Testing Tools",
     methodologies: "Methodologies",
     workExperience: "Work Experience",
-    seniorEngineer: "Senior V&V Engineer, TechCorp",
-    engineer: "V&V Engineer, InnoSoft Solutions",
-    masters: "MS in Computer Science",
-    bachelors: "BS in Software Engineering",
+    entwicklungsEngineer: "Development Engineer, IAV GmbH",
+    designEngineer: "Design Engineer, IAV GmbH",
+    masters: "MS in Scientific Instrumentation",
+    bachelors: "BS in Mechanical Engineering",
     project1: "Automated Test Framework for IoT Devices",
     project2: "AI-Powered Test Case Generation Tool",
     project3: "Performance Testing Dashboard",
@@ -29,7 +29,7 @@ const translations = {
   },
   de: {
     name: "Bhanu Sandeep Reddy Chirra",
-    title: "Verifizierungs- und Validierungsingenieur",
+    title: "Verifizierungs- und Validierungs Testingenieur",
     experience: "Erfahrung",
     education: "Ausbildung",
     projects: "Projekte",
@@ -40,10 +40,10 @@ const translations = {
     testingTools: "Testwerkzeuge",
     methodologies: "Methodiken",
     workExperience: "Berufserfahrung",
-    seniorEngineer: "Senior V&V Ingenieur, TechCorp",
-    engineer: "V&V Ingenieur, InnoSoft Solutions",
-    masters: "Master in Informatik",
-    bachelors: "Bachelor in Softwaretechnik",
+    entwicklungsEngineer: "Entwicklungsingenieur, IAV GmbH",
+    designEngineer: "Konstrukteur, IAV GmbH",
+    masters: "Master in Scientific Instrumentation",
+    bachelors: "Bachelor in Machinenbau",
     project1: "Automatisiertes Testframework für IoT-Geräte",
     project2: "KI-gestütztes Testfall-Generierungstool",
     project3: "Performance-Testing-Dashboard",
@@ -58,7 +58,7 @@ export default function Resume() {
 
   return (
     <div className="max-w-4xl mx-auto p-8 pt-16 bg-white text-gray-800 font-serif relative">
-      <div className="absolute top-0 right-0 p-0.5 space-x-2">
+      <div className="absolute top-1 right-1 p-0.5 space-x-2">
         <Button
           variant={language === 'en' ? 'default' : 'outline'}
           onClick={() => setLanguage('en')}
@@ -105,8 +105,8 @@ export default function Resume() {
           <section className="mb-6">
             <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">{t.skills}</h3>
             <div className="space-y-2">
-              <SkillCategory name={t.programmingLanguages} skills={["Python", "Matlab", "Java", "SQL"]} />
-              <SkillCategory name={t.testingTools} skills={["ecu.test", "vTESTstudio", "TestNG", "Cucumber"]} />
+              <SkillCategory name={t.programmingLanguages} skills={["Python", "Matlab"]} />
+              <SkillCategory name={t.testingTools} skills={["ecu.test", "vTESTstudio"]} />
               <SkillCategory name={t.methodologies} skills={["Agile", "TDD", "BDD", "CI/CD"]} />
             </div>
           </section>
@@ -115,8 +115,7 @@ export default function Resume() {
             <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">{t.certifications}</h3>
             <ul className="list-disc list-inside">
               <li>ISTQB Certified Tester</li>
-              <li>AWS Certified Developer</li>
-              <li>Scrum Master Certification</li>
+              <li>IREB Requirements Engineer</li>
             </ul>
           </section>
           
@@ -159,7 +158,7 @@ export default function Resume() {
             <section>
               <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">{t.workExperience}</h3>
               <div className="mb-4">
-                <h4 className="font-semibold">{t.seniorEngineer}</h4>
+                <h4 className="font-semibold">{t.entwicklungsEngineer}</h4>
                 <p className="text-sm text-gray-600">June 2019 - Present</p>
                 <ul className="list-disc list-inside mt-2">
                   <li>{language === 'en' ? 'Led a team of 5 engineers in implementing automated testing frameworks, resulting in a 40% reduction in regression testing time' : 'Leitete ein Team von 5 Ingenieuren bei der Implementierung automatisierter Testframeworks, was zu einer 40%igen Reduzierung der Regressionstest-Zeit führte'}</li>
@@ -168,7 +167,7 @@ export default function Resume() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold">{t.engineer}</h4>
+                <h4 className="font-semibold">{t.designEngineer}</h4>
                 <p className="text-sm text-gray-600">August 2017 - May 2019</p>
                 <ul className="list-disc list-inside mt-2">
                   <li>{language === 'en' ? 'Designed and executed test plans for web and mobile applications, identifying and tracking over 200 critical bugs' : 'Entwarf und führte Testpläne für Web- und mobile Anwendungen durch, identifizierte und verfolgte über 200 kritische Fehler'}</li>
