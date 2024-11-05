@@ -62,7 +62,7 @@ export default function Resume() {
         <Button
           variant={language === 'en' ? 'default' : 'outline'}
           onClick={() => setLanguage('en')}
-          className={language === 'en' ? 'bg-black text-white' : ''}
+          className={`w-8 h-8 p-0 text-1xl ${language === 'en' ? 'bg-black text-white' : ''}`}
           aria-label="Switch to English"
         >
           🇬🇧
@@ -70,7 +70,7 @@ export default function Resume() {
         <Button
           variant={language === 'de' ? 'default' : 'outline'}
           onClick={() => setLanguage('de')}
-          className={language === 'de' ? 'bg-black text-white' : ''}
+          className={`w-8 h-8 p-0 text-1xl ${language === 'de' ? 'bg-black text-white' : ''}`}
           aria-label="Auf Deutsch umschalten"
         >
           🇩🇪
