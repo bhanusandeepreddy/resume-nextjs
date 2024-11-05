@@ -114,17 +114,17 @@ export default function Resume() {
           <section className="mb-4">
             <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">{t.certifications}</h3>
             <ul className="list-disc list-inside">
-              <li>ISTQB Certified Tester</li>
-              <li>IREB Requirements Engineer</li>
+              <li>{language === 'en' ? 'ISTQB Certified Engineer' : 'ISTQB zertifizierter ingenieur'}</li>
+              <li>{language === 'en' ? 'IREB Requirements Engineer' : 'IREB Anforderungsingenieur'}</li>
             </ul>
           </section>
           
           <section>
             <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">{t.languages}</h3>
             <ul className="list-disc list-inside">
-              <li>Telugu (Native)</li>
-              <li>English (Fluent)</li>
-              <li>German (Intermediate)</li>
+              <li>{language === 'en' ? 'Telugu (Native)' : 'Telugu (Muttersprache)'}</li>
+              <li>{language === 'en' ? 'English (Fluent)' : 'English (Fleißend)'}</li>
+              <li>{language === 'en' ? 'German (Intermediate)' : 'Deutsch (mittelstufe)'}</li>
             </ul>
           </section>
         </div>
