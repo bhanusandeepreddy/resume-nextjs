@@ -19,6 +19,7 @@ const translations = {
     methodologies: "Methodologies",
     workExperience: "Work Experience",
     entwicklungsEngineer: "Development Engineer, IAV GmbH",
+    entwicklungsEngineer1: "Development Engineer, PEPP GmbH & Co KG",
     designEngineer: "Design Engineer, IAV GmbH",
     masters: "MS in Scientific Instrumentation",
     bachelors: "BS in Mechanical Engineering",
@@ -41,7 +42,8 @@ const translations = {
     methodologies: "Methodiken",
     workExperience: "Berufserfahrung",
     entwicklungsEngineer: "Entwicklungsingenieur, IAV GmbH",
-    designEngineer: "Konstrukteur, IAV GmbH",
+    entwicklungsEngineer1: "Entwicklungsingenieur, PEPP GmbH & Co KG",
+    designEngineer: "Konstrukteur, PEPP GmbH",
     masters: "Master in Scientific Instrumentation",
     bachelors: "Bachelor in Machinenbau",
     project1: "Automatisiertes Testframework für IoT-Geräte",
@@ -159,20 +161,29 @@ export default function Resume() {
               <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">{t.workExperience}</h3>
               <div className="mb-4">
                 <h4 className="font-semibold">{t.entwicklungsEngineer}</h4>
-                <p className="text-sm text-gray-600">June 2019 - Present</p>
+                <p className="text-sm text-gray-600">{language === 'en' ? 'January 2019 - Present' : 'Januar 2019 - heute'}</p>
                 <ul className="list-disc list-inside mt-2">
-                  <li>{language === 'en' ? 'Led a team of 5 engineers in implementing automated testing frameworks, resulting in a 40% reduction in regression testing time' : 'Leitete ein Team von 5 Ingenieuren bei der Implementierung automatisierter Testframeworks, was zu einer 40%igen Reduzierung der Regressionstest-Zeit führte'}</li>
-                  <li>{language === 'en' ? 'Developed and maintained a comprehensive test suite for a cloud-based SaaS platform, achieving 95% code coverage' : 'Entwickelte und pflegte eine umfassende Testsuite für eine cloudbasierte SaaS-Plattform und erreichte eine Codeabdeckung von 95%'}</li>
-                  <li>{language === 'en' ? 'Implemented continuous integration and deployment pipelines, reducing release cycles from bi-weekly to daily' : 'Implementierte kontinuierliche Integrations- und Bereitstellungspipelines, wodurch die Release-Zyklen von zweiwöchentlich auf täglich reduziert wurden'}</li>
+                  <li>{language === 'en' ? 'Developed test processes and built functional test cases using IBM DOORS' : 'Entwickelte Testprozesse und erstellte funktionale Testfälle mit IBM DOORS'}</li>
+                  <li>{language === 'en' ? 'Implemented tests in vTest Studio and maintained Jira Kanban Board for ticketing system' : 'Implementierte Tests in vTest Studio und pflegte Jira Kanban Board für das Ticketsystem'}</li>
+                  <li>{language === 'en' ? 'Analyzed and reviewed requirements for testability, supporting Requirements Engineers in AD projects' : 'Analysierte und überprüfte Anforderungen auf Testbarkeit, unterstützte Anforderungsingenieure in AD-Projekten'}</li>
+                  <li>{language === 'en' ? 'Automated test result processing using VBA and developed Python tools with GUI for repetitive tasks' : 'Automatisierte die Verarbeitung von Testergebnissen mit VBA und entwickelte Python-Tools mit GUI für sich wiederholende Aufgaben'}</li>
+                  <li>{language === 'en' ? 'Researched automotive regulations and physical differences in objects across countries' : 'Recherchierte Automobilvorschriften und physikalische Unterschiede von Objekten in verschiedenen Ländern'}</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold">{t.entwicklungsEngineer1}</h4>
+                <p className="text-sm text-gray-600">{language === 'en' ? 'September 2018 - December 2018' : 'September 2018 - Dezember 2018'}</p>
+                <ul className="list-disc list-inside mt-2">
+                  <li>{language === 'en' ? 'Participated in Automated Driving project for an OEM using Simulink and Matlab' : 'Beteiligte sich an einem Projekt für automatisiertes Fahren für einen OEM unter Verwendung von Simulink und Matlab'}</li>
+                  <li>{language === 'en' ? 'Performed ECU Unit Tests for ASPICE Standards' : 'Führte ECU-Unit-Tests für ASPICE-Standards durch'}</li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold">{t.designEngineer}</h4>
-                <p className="text-sm text-gray-600">August 2017 - May 2019</p>
+                <p className="text-sm text-gray-600">{language === 'en' ? 'February 2018 - Auguest 2018' : 'Februar 2018 - August 2018'}</p>
                 <ul className="list-disc list-inside mt-2">
-                  <li>{language === 'en' ? 'Designed and executed test plans for web and mobile applications, identifying and tracking over 200 critical bugs' : 'Entwarf und führte Testpläne für Web- und mobile Anwendungen durch, identifizierte und verfolgte über 200 kritische Fehler'}</li>
-                  <li>{language === 'en' ? 'Collaborated with development teams to implement BDD practices, improving requirements clarity by 30%' : 'Arbeitete mit Entwicklungsteams zusammen, um BDD-Praktiken zu implementieren, was die Klarheit der Anforderungen um 30% verbesserte'}</li>
-                  <li>{language === 'en' ? 'Optimized performance testing processes, resulting in a 25% reduction in application load times' : 'Optimierte Performance-Testprozesse, was zu einer 25%igen Reduzierung der Anwendungsladezeiten führte'}</li>
+                  <li>{language === 'en' ? 'Designed 3D Printed Water Jacket for Single Cylinder Engine (Prototype)' : 'Entwarf 3D-gedruckten Wassermantel für Einzylindermotor (Prototyp)'}</li>
+                  <li>{language === 'en' ? 'Designed Cylinder Heads for various OEMs considering manufacturing through Casting' : 'Entwarf Zylinderköpfe für verschiedene OEMs unter Berücksichtigung der Herstellung durch Gießen'}</li>
                 </ul>
               </div>
             </section>
