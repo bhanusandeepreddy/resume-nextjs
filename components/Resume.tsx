@@ -171,7 +171,7 @@ export default function Resume() {
                   <li>{language === 'en' ? 'Researched automotive regulations and physical differences in objects across countries' : 'Recherchierte Automobilvorschriften und physikalische Unterschiede von Objekten in verschiedenen Ländern'}</li>
                 </ul>
               </div>
-              <div>
+              <div className="mb-4">
                 <h4 className="font-semibold">{t.entwicklungsEngineer1}</h4>
                 <p className="text-sm text-gray-600">{language === 'en' ? 'September 2018 - December 2018' : 'September 2018 - Dezember 2018'}</p>
                 <ul className="list-disc list-inside mt-2">
@@ -179,7 +179,7 @@ export default function Resume() {
                   <li>{language === 'en' ? 'Performed ECU Unit Tests for ASPICE Standards' : 'Führte ECU-Unit-Tests für ASPICE-Standards durch'}</li>
                 </ul>
               </div>
-              <div>
+              <div className="mb-4">
                 <h4 className="font-semibold">{t.designEngineer}</h4>
                 <p className="text-sm text-gray-600">{language === 'en' ? 'February 2018 - Auguest 2018' : 'Februar 2018 - August 2018'}</p>
                 <ul className="list-disc list-inside mt-2">
