@@ -92,10 +92,10 @@ function WelcomePopup({ language }: { language: 'en' | 'de' }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-white shadow-lg rounded-lg">
         <DialogHeader>
-          <DialogTitle>{t.welcome}</DialogTitle>
-          <DialogDescription>
+        <DialogTitle className="text-2xl font-bold text-gray-900">{t.welcome}</DialogTitle>
+          <DialogDescription className="text-gray-600">
             {t.thankYou}
           </DialogDescription>
         </DialogHeader>
