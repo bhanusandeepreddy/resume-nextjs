@@ -1,6 +1,5 @@
 "use client"
 
-import { Analytics } from "@vercel/analytics/react"
 import { useState, useEffect } from 'react'
 import { Phone, Mail, MapPin, Linkedin } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -10,7 +9,7 @@ const translations = {
     name: "Bhanu Sandeep Reddy Chirra",
     title: "Verification and Validation Test Engineer",
     experience: "Experience",
-    education: "Educational Background",
+    education: "Education",
     projects: "Projects",
     skills: "Skills",
     certifications: "Certifications",
