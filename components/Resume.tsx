@@ -23,7 +23,7 @@ const translations = {
     entwicklungsEngineer1: "Development Engineer, PEPP GmbH & Co KG",
     designEngineer: "Design Engineer, IAV GmbH",
     masters: "MS in Scientific Instrumentation",
-    bachelors: "BS in Mechanical Engineering",
+    bachelors: "B.Tech in Mechanical Engineering",
     project1: "Automated Test Framework for IoT Devices",
     project2: "AI-Powered Test Case Generation Tool",
     project3: "Performance Testing Dashboard",
@@ -63,7 +63,7 @@ export default function Resume() {
     const browserLang = navigator.language.split('-')[0]
     setLanguage(browserLang === 'de' ? 'de' : 'en')
   }, [])
-  
+
   return (
     <div className="max-w-4xl mx-auto p-8 pt-16 bg-white text-gray-800 font-serif relative">
       <div className="absolute top-1 right-1 p-0.5 space-x-2">
@@ -200,20 +200,19 @@ export default function Resume() {
               <h3 className="text-lg font-sans font-semibold text-navy border-b border-gray-300 mb-2">{t.education}</h3>
               <div className="mb-4">
                 <h4 className="font-semibold">{t.masters}</h4>
-                <p>Stanford University, 2015-2017</p>
+                <p>Fachhochschule Jena, 2014-2018</p>
                 <ul className="list-disc list-inside mt-2">
-                  <li>{language === 'en' ? 'Specialized in Software Engineering and Artificial Intelligence' : 'Spezialisierung auf Software Engineering und Künstliche Intelligenz'}</li>
-                  <li>{language === 'en' ? 'Thesis: "Improving Test Case Generation Using Machine Learning Techniques"' : 'Abschlussarbeit: "Verbesserung der Testfallgenerierung mit Techniken des maschinellen Lernens"'}</li>
-                  <li>GPA: 3.9/4.0</li>
+                  <li>{language === 'en' ? 'Grade: 1.7' : 'Note: 1,7'}</li>
+                  <li>{language === 'en' ? 'Activities: AIESEC Engineering Manager' : 'Aktivitäten: AIESEC Engineering Manager'}</li>
+                  <li>{language === 'en' ? 'Specialization in Advanced Design (Autodesk Inventor), Finite Element Methods (ANSYS), Scientific Computing (Matlab) and Material Sensors' : 'Spezialisierung in Advanced Design (Autodesk Inventor), Finite-Elemente-Methoden (ANSYS), Scientific Computing (Matlab) und Materialsensoren'}</li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold">{t.bachelors}</h4>
-                <p>University of California, Berkeley, 2011-2015</p>
+                <p>Jawaharlal Nehru Technological University, 2009-2013</p>
                 <ul className="list-disc list-inside mt-2">
-                  <li>{language === 'en' ? 'Minor in Data Science' : 'Nebenfach Datenwissenschaften'}</li>
-                  <li>{language === 'en' ? 'Capstone Project: "Automated Bug Detection in Mobile Applications"' : 'Abschlussprojekt: "Automatisierte Fehlererkennung in mobilen Anwendungen"'}</li>
-                  <li>GPA: 3.8/4.0</li>
+                  <li>{language === 'en' ? 'Grade: 73%' : 'Note: 73%'}</li>
+                  <li>{language === 'en' ? 'Activities: Debate Organizing Team for LITAM Quest 2k11, Overall Co-ordinator for LITAM Quest 2k12, NSS Member of the College, ISTE Member, IE Member' : 'Aktivitäten: Organisationsteam für Debatten bei LITAM Quest 2k11, Gesamtkoordinator für LITAM Quest 2k12, NSS-Mitglied des Colleges, ISTE-Mitglied, IE-Mitglied'}</li>
                 </ul>
               </div>
             </section>
