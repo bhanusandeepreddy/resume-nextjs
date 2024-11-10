@@ -132,8 +132,19 @@ export default function Resume() {
     setLanguage(browserLang === 'de' ? 'de' : 'en')
   }, [])
 
+  const handleSectionChange = (section: 'experience' | 'education' | 'projects') => {
+    setActiveSection(section)
+    track('Section Changed', { section })
+  }
+
+  const handleLanguageChange = (lang: 'en' | 'de') => {
+    setLanguage(lang)
+    track('Language Changed', { language: lang })
+  }
+
   return (
     <div className="max-w-4xl mx-auto p-8 pt-16 bg-white text-gray-800 font-serif relative">
+      <WelcomePopup language={language} />
       <div className="absolute top-1 right-1 p-0.5 space-x-2">
         <Button
           variant={language === 'en' ? 'default' : 'outline'}
