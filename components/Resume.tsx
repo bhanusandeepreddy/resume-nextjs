@@ -3,6 +3,16 @@
 import { useState, useEffect } from 'react'
 import { Phone, Mail, MapPin, Linkedin } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import { track } from '@vercel/analytics'
+import Image from 'next/image'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 
 const translations = {
   en: {
@@ -27,6 +37,11 @@ const translations = {
     project2: "AI-Powered Test Case Generation Tool",
     project3: "Performance Testing Dashboard",
     allRightsReserved: "All rights reserved.",
+    welcome: "Welcome to My Interactive Resume!",
+    thankYou: "Thank you for visiting. I hope you find the information you're looking for.",
+    cookieMessage: "This site uses cookies to enhance your browsing experience and provide analytics. Do you accept the use of cookies?",
+    acceptCookies: "Yes, I accept",
+    declineCookies: "No, thanks"
   },
   de: {
     name: "Bhanu Sandeep Reddy Chirra",
@@ -50,7 +65,61 @@ const translations = {
     project2: "KI-gestütztes Testfall-Generierungstool",
     project3: "Performance-Testing-Dashboard",
     allRightsReserved: "Alle Rechte vorbehalten.",
+    welcome: "Willkommen zu meinem interaktiven Lebenslauf!",
+    thankYou: "Danke für Ihren Besuch. Ich hoffe, Sie finden die Informationen, die Sie suchen.",
+    cookieMessage: "Diese Website verwendet Cookies, um Ihr Browsing-Erlebnis zu verbessern und Analysen bereitzustellen. Akzeptieren Sie die Verwendung von Cookies?",
+    acceptCookies: "Ja, ich akzeptiere",
+    declineCookies: "Nein, danke"
   }
+}
+
+function WelcomePopup({ language }: { language: 'en' | 'de' }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const t = translations[language]
+
+  useEffect(() => {
+    const hasSeenPopup = localStorage.getItem('hasSeenWelcomePopup')
+    if (!hasSeenPopup) {
+      setIsOpen(true)
+    }
+  }, [])
+
+  const handleClose = (accepted: boolean) => {
+    setIsOpen(false)
+    localStorage.setItem('hasSeenWelcomePopup', 'true')
+    track('Welcome Popup', { accepted })
+  }
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>{t.welcome}</DialogTitle>
+          <DialogDescription>
+            {t.thankYou}
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex justify-center py-4">
+          <Image
+            src="/bhanu.jpg?height=200&width=200"
+            alt="Welcome"
+            width={200}
+            height={200}
+            className="rounded-full"
+          />
+        </div>
+        <DialogDescription>
+          {t.cookieMessage}
+        </DialogDescription>
+        <DialogFooter>
+          <Button variant="outline" onClick={() => handleClose(false)}>
+            {t.declineCookies}
+          </Button>
+          <Button onClick={() => handleClose(true)}>{t.acceptCookies}</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
 }
 
 export default function Resume() {
@@ -185,7 +254,7 @@ export default function Resume() {
               </div>
               <div className="mb-4">
                 <h4 className="font-semibold">{t.designEngineer}</h4>
-                <p className="text-sm text-gray-600">{language === 'en' ? 'February 2018 - Auguest 2018' : 'Februar 2018 - August 2018'}</p>
+                <p className="text-sm text-gray-600">{language === 'en' ? 'February 2018 - August 2018' : 'Februar 2018 - August 2018'}</p>
                 <ul className="list-disc list-inside mt-2">
                   <li>{language === 'en' ? 'Designed 3D Printed Water Jacket for Single Cylinder Engine (Prototype)' : 'Entwarf 3D-gedruckten Wassermantel für Einzylindermotor (Prototyp)'}</li>
                   <li>{language === 'en' ? 'Designed Cylinder Heads for various OEMs considering manufacturing through Casting' : 'Entwarf Zylinderköpfe für verschiedene OEMs unter Berücksichtigung der Herstellung durch Gießen'}</li>
