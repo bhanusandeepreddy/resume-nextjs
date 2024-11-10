@@ -1,7 +1,7 @@
 "use client"
 
 import { Analytics } from "@vercel/analytics/react"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Phone, Mail, MapPin, Linkedin } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
@@ -59,6 +59,11 @@ export default function Resume() {
   const [language, setLanguage] = useState<'en' | 'de'>('en')
   const t = translations[language]
 
+  useEffect(() => {
+    const browserLang = navigator.language.split('-')[0]
+    setLanguage(browserLang === 'de' ? 'de' : 'en')
+  }, [])
+  
   return (
     <div className="max-w-4xl mx-auto p-8 pt-16 bg-white text-gray-800 font-serif relative">
       <div className="absolute top-1 right-1 p-0.5 space-x-2">
