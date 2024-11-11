@@ -13,6 +13,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { InterestPopup } from '@/components/InterestPopup'
+import { Toaster } from "@/components/ui/toaster"
 
 const translations = {
   en: {
@@ -334,6 +336,7 @@ export default function Resume() {
       <footer className="mt-8 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} Bhanu Sandeep Reddy Chirra. {t.allRightsReserved}
       </footer>
+      <Toaster />
     </div>
   )
 }
