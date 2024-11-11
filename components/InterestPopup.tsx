@@ -34,7 +34,7 @@ export function InterestPopup({ language }: { language: 'en' | 'de' }) {
   if (!isVisible) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 p-4 bg-gray-300 shadow-lg rounded-t-lg max-w-4xl mx-auto">
+    <div className="fixed bottom-0 left-1 right-1 p-4 bg-gray-300 shadow-lg rounded-t-lg border-black max-w-4xl mx-auto">
       <Button 
         variant="outline" 
         size="icon"
@@ -46,7 +46,7 @@ export function InterestPopup({ language }: { language: 'en' | 'de' }) {
       </Button>
       <h3 className="text-lg font-semibold mb-2">
         {language === 'en' 
-          ? "Interested in hiring me or want to collaborate on a new project?" 
+          ? "Interested in hiring me? Want to collaborate on a new project?" 
           : "Interesse an einer Zusammenarbeit oder einem neuen Projekt?"}
       </h3>
       <form onSubmit={handleSubmit} className="space-y-4">
