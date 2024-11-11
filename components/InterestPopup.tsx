@@ -36,7 +36,7 @@ export function InterestPopup({ language }: { language: 'en' | 'de' }) {
   return (
     <div className="fixed bottom-0 left-0 right-0 p-4 bg-white shadow-lg rounded-t-lg max-w-4xl mx-auto">
       <Button 
-        variant="ghost" 
+        variant="outline" 
         size="icon"
         className="absolute top-2 right-2"
         onClick={() => setIsVisible(false)}
