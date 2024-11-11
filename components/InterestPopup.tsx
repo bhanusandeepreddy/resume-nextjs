@@ -34,7 +34,7 @@ export function InterestPopup({ language }: { language: 'en' | 'de' }) {
   if (!isVisible) return null
 
   return (
-    <div className="fixed bottom-2 left-4 right-4 p-4 bg-gray-300 shadow-lg rounded-t-lg max-w-3xl mx-auto border border-black">
+    <div className="fixed bottom-2 left-2 right-2 p-4 bg-gray-300 shadow-lg rounded-t-lg max-w-3xl mx-auto border border-black">
       <Button 
         variant="outline" 
         size="icon"
