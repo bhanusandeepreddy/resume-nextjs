@@ -333,6 +333,7 @@ export default function Resume() {
           )}
         </div>
       </div>
+      <InterestPopup language={language} />
       <footer className="mt-8 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} Bhanu Sandeep Reddy Chirra. {t.allRightsReserved}
       </footer>
