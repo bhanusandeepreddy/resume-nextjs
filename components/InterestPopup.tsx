@@ -3,16 +3,24 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { X, MessageSquare } from "lucide-react"
+import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+import { useCustomToast } from "./CustomToast"
+import CustomToast from "./CustomToast"
+import { logInterestMessage } from "@/app/actions/log-message"
 
-export function InterestPopup({ language }: { language: "en" | "de" }) {
+interface InterestPopupProps {
+  language?: "en" | "de"
+}
+
+const InterestPopup = ({ language = "en" }: InterestPopupProps) => {
   const [isVisible, setIsVisible] = useState(false)
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { showToast, closeToast, toasts } = useCustomToast()
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,58 +30,94 @@ export function InterestPopup({ language }: { language: "en" | "de" }) {
     return () => clearTimeout(timer)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the data to a server
-    console.log("Submitted:", { email, message })
-    toast({
-      title: language === "en" ? "Message sent!" : "Nachricht gesendet!",
-      description: language === "en" ? "Thank you for your interest." : "Vielen Dank für Ihr Interesse.",
-    })
-    setIsVisible(false)
+    setIsSubmitting(true)
+
+    try {
+      // Log the message using the webhook
+      const result = await logInterestMessage({
+        email,
+        message,
+        language,
+      })
+
+      if (result.success) {
+        showToast(
+          language === "en" ? "Message sent!" : "Nachricht gesendet!",
+          language === "en" ? "Thank you for your interest." : "Vielen Dank für Ihr Interesse.",
+        )
+        setIsVisible(false)
+        setEmail("")
+        setMessage("")
+      } else {
+        showToast(
+          language === "en" ? "Error sending message" : "Fehler beim Senden der Nachricht",
+          language === "en"
+            ? "Please try again later or contact directly via email."
+            : "Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns direkt per E-Mail.",
+        )
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      showToast(
+        language === "en" ? "Error sending message" : "Fehler beim Senden der Nachricht",
+        language === "en"
+          ? "Please try again later or contact directly via email."
+          : "Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns direkt per E-Mail.",
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
+
+  if (!isVisible) return null
 
   return (
     <>
-      {isVisible && (
-        <div className="fixed bottom-16 left-2 right-2 p-4 bg-gray-300 shadow-lg rounded-t-lg max-w-3xl mx-auto border border-black">
-          <Button variant="outline" size="icon" className="absolute top-2 right-2" onClick={() => setIsVisible(false)}>
-            <X className="h-4 w-4" />
-            <span className="sr-only">{language === "en" ? "Close" : "Schließen"}</span>
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white shadow-lg rounded-t-lg max-w-4xl mx-auto">
+        <Button variant="outline" size="icon" className="absolute top-2 right-2" onClick={() => setIsVisible(false)}>
+          <X className="h-4 w-4" />
+          <span className="sr-only">{language === "en" ? "Close" : "Schließen"}</span>
+        </Button>
+        <h3 className="text-lg font-semibold mb-2">
+          {language === "en"
+            ? "Interested in hiring me or want to collaborate on a new project?"
+            : "Interesse an einer Zusammenarbeit oder einem neuen Projekt?"}
+        </h3>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <Input
+            type="email"
+            placeholder={language === "en" ? "Your email" : "Ihre E-Mail"}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            disabled={isSubmitting}
+          />
+          <Textarea
+            placeholder={language === "en" ? "Your message" : "Ihre Nachricht"}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+            disabled={isSubmitting}
+          />
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? (language === "en" ? "Sending..." : "Senden...") : language === "en" ? "Send" : "Senden"}
           </Button>
-          <h3 className="text-lg font-semibold mb-2">
-            {language === "en"
-              ? "Interested in hiring me? Want to collaborate on a new project?"
-              : "Interesse an einer Zusammenarbeit oder einem neuen Projekt?"}
-          </h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              type="email"
-              placeholder={language === "en" ? "Your email" : "Ihre E-Mail"}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Textarea
-              placeholder={language === "en" ? "Your message" : "Ihre Nachricht"}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            />
-            <Button type="submit">{language === "en" ? "Send" : "Senden"}</Button>
-          </form>
-        </div>
-      )}
-      <Button
-        variant="outline"
-        size="icon"
-        className="fixed bottom-2 right-2 rounded-full shadow-lg"
-        onClick={() => setIsVisible(true)}
-      >
-        <MessageSquare className="h-6 w-6" />
-        <span className="sr-only">{language === "en" ? "Contact" : "Kontakt"}</span>
-      </Button>
+        </form>
+      </div>
+
+      {toasts.map((toast) => (
+        <CustomToast
+          key={toast.id}
+          id={toast.id}
+          title={toast.title}
+          message={toast.message}
+          onClose={() => closeToast(toast.id)}
+        />
+      ))}
     </>
   )
 }
 
+export default InterestPopup
