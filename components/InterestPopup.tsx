@@ -7,8 +7,8 @@ import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { useCustomToast } from "@/components/CustomToast"
-import CustomToast from "@/components/CustomToast"
+import { useCustomToast } from "./CustomToast"
+import CustomToast from "./CustomToast"
 import { logInterestMessage } from "@/app/actions/log-message"
 
 interface InterestPopupProps {
