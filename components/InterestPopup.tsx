@@ -22,7 +22,7 @@ export function InterestPopup({ language }: { language: "en" | "de" }) {
     return () => clearTimeout(timer)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically send the data to a server
     console.log("Submitted:", { email, message })
