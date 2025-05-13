@@ -7,7 +7,13 @@ import { X, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+<<<<<<< HEAD
 import { toast } from "@/components/ui/use-toast"
+=======
+import { useCustomToast } from "./CustomToast"
+import CustomToast from "./CustomToast"
+import { logInterestMessage } from "@/app/actions/log-message"
+>>>>>>> parent of 46a221b (commits for errors)
 
 export function InterestPopup({ language }: { language: "en" | "de" }) {
   const [isVisible, setIsVisible] = useState(false)
