@@ -1,5 +1,6 @@
 "use client"
 
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { useState, useEffect } from 'react'
 import { Phone, Mail, MapPin, Linkedin } from 'lucide-react'
 import { Button } from "@/components/ui/button"
