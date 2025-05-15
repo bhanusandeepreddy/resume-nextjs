@@ -8,6 +8,8 @@ import Image from "next/image"
 
 export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
   const [isVisible, setIsVisible] = useState(false)
+  // Generate random sizes and positions once when component mounts
+  const [squirrels] = useState(() => generateRandomSquirrels())
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,6 +19,38 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
     return () => clearTimeout(timer)
   }, [])
 
+  function generateRandomSquirrels() {
+    // Helper function to get a random number between min and max
+    const getRandomBetween = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min
+
+    return [
+      {
+        // Left squirrel - smaller to larger size range
+        src: "/squirrel1.jpg",
+        top: getRandomBetween(5, 20),
+        left: getRandomBetween(5, 20),
+        size: getRandomBetween(35, 70), // Much more random size range
+        rotation: getRandomBetween(-15, 15),
+      },
+      {
+        // Middle squirrel - smaller to larger size range
+        src: "/squirrel2.jpg",
+        top: getRandomBetween(5, 20),
+        left: getRandomBetween(40, 55),
+        size: getRandomBetween(35, 70), // Much more random size range
+        rotation: getRandomBetween(-15, 15),
+      },
+      {
+        // Right squirrel - smaller to larger size range
+        src: "/squirrel3.jpg",
+        top: getRandomBetween(5, 20),
+        left: getRandomBetween(75, 90),
+        size: getRandomBetween(35, 70), // Much more random size range
+        rotation: getRandomBetween(-15, 15),
+      },
+    ]
+  }
+
   const handleEmailClick = () => {
     toast({
       title: language === "en" ? "Opening email client" : "E-Mail-Client wird geöffnet",
@@ -24,34 +58,6 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
         language === "en" ? "Redirecting to your email application." : "Weiterleitung zu Ihrer E-Mail-Anwendung.",
     })
   }
-
-  // Define three different squirrel images with their positions
-  const squirrels = [
-    {
-      // Left squirrel
-      src: "/squirrel1.png", // Using your first squirrel image
-      top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
-      left: Math.floor(Math.random() * 15) + 5, // 5-20% from left
-      size: Math.floor(Math.random() * 15) + 45, // 45-60px
-      rotation: Math.floor(Math.random() * 20) - 10, // -10 to 10 degrees
-    },
-    {
-      // Middle squirrel
-      src: "/squirrel2.png", // Using your second squirrel image
-      top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
-      left: Math.floor(Math.random() * 15) + 42.5, // 42.5-57.5% from left (centered)
-      size: Math.floor(Math.random() * 15) + 50, // 50-65px (slightly larger)
-      rotation: Math.floor(Math.random() * 20) - 10, // -10 to 10 degrees
-    },
-    {
-      // Right squirrel
-      src: "/squirrel3.png", // Using your third squirrel image
-      top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
-      left: Math.floor(Math.random() * 15) + 75, // 75-90% from left
-      size: Math.floor(Math.random() * 15) + 45, // 45-60px
-      rotation: Math.floor(Math.random() * 20) - 10, // -10 to 10 degrees
-    },
-  ]
 
   return (
     <>
@@ -69,8 +75,8 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
               <span className="sr-only">{language === "en" ? "Close" : "Schließen"}</span>
             </Button>
 
-            {/* Squirrel images using your jpg files */}
-            <div className="relative h-24 w-full mb-4">
+            {/* Squirrel images with random sizes */}
+            <div className="relative h-28 w-full mb-4">
               {squirrels.map((squirrel, index) => (
                 <div
                   key={index}
