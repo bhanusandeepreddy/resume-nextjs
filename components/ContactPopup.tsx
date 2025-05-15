@@ -29,7 +29,7 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
   const squirrels = [
     {
       // Left squirrel
-      src: "/squirrel1.jpg", // Using your first squirrel image
+      src: "/squirrel1.png", // Using your first squirrel image
       top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
       left: Math.floor(Math.random() * 15) + 5, // 5-20% from left
       size: Math.floor(Math.random() * 15) + 45, // 45-60px
@@ -37,7 +37,7 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
     },
     {
       // Middle squirrel
-      src: "/squirrel2.jpg", // Using your second squirrel image
+      src: "/squirrel2.png", // Using your second squirrel image
       top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
       left: Math.floor(Math.random() * 15) + 42.5, // 42.5-57.5% from left (centered)
       size: Math.floor(Math.random() * 15) + 50, // 50-65px (slightly larger)
@@ -45,7 +45,7 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
     },
     {
       // Right squirrel
-      src: "/squirrel3.jpg", // Using your third squirrel image
+      src: "/squirrel3.png", // Using your third squirrel image
       top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
       left: Math.floor(Math.random() * 15) + 75, // 75-90% from left
       size: Math.floor(Math.random() * 15) + 45, // 45-60px
