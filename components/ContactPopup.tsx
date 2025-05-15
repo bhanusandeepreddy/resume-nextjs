@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { X, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
+import Image from "next/image"
 
 export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
   const [isVisible, setIsVisible] = useState(false)
@@ -24,6 +25,29 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
     })
   }
 
+  // Generate random positions for the squirrels
+  // These will be fixed once the component renders
+  const squirrelPositions = [
+    {
+      top: Math.floor(Math.random() * 20) + 5, // 5-25% from top
+      left: Math.floor(Math.random() * 20) + 5, // 5-25% from left
+      size: Math.floor(Math.random() * 20) + 40, // 40-60px
+      rotation: Math.floor(Math.random() * 30) - 15, // -15 to 15 degrees
+    },
+    {
+      top: Math.floor(Math.random() * 20) + 5, // 5-25% from top
+      left: Math.floor(Math.random() * 20) + 40, // 40-60% from left
+      size: Math.floor(Math.random() * 20) + 40, // 40-60px
+      rotation: Math.floor(Math.random() * 30) - 15, // -15 to 15 degrees
+    },
+    {
+      top: Math.floor(Math.random() * 20) + 5, // 5-25% from top
+      left: Math.floor(Math.random() * 20) + 75, // 75-95% from left
+      size: Math.floor(Math.random() * 20) + 40, // 40-60px
+      rotation: Math.floor(Math.random() * 30) - 15, // -15 to 15 degrees
+    },
+  ]
+
   return (
     <>
       {isVisible && (
@@ -33,56 +57,35 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
             <Button
               variant="outline"
               size="icon"
-              className="absolute top-3 right-3 rounded-full h-8 w-8 p-0"
+              className="absolute top-3 right-3 rounded-full h-8 w-8 p-0 z-10"
               onClick={() => setIsVisible(false)}
             >
               <X className="h-4 w-4" />
               <span className="sr-only">{language === "en" ? "Close" : "Schließen"}</span>
             </Button>
 
-            {/* Squirrel doodles */}
-            <div className="flex justify-center mb-4">
-              <svg
-                width="200"
-                height="60"
-                viewBox="0 0 200 60"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-[#5d5a55]"
-              >
-                {/* Left squirrel */}
-                <path
-                  d="M40 35C42 32 45 30 48 32C51 34 50 38 47 40C44 42 41 40 40 35Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                <path d="M47 32C49 28 53 30 54 33" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M42 38C40 40 38 45 40 48" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M45 41C44 44 45 48 48 49" stroke="currentColor" strokeWidth="1.5" fill="none" />
-
-                {/* Middle squirrel */}
-                <path
-                  d="M90 20C95 18 102 20 105 25C108 30 105 38 98 40C91 42 84 38 82 30C80 22 85 15 90 20Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                <path d="M103 25C108 20 112 25 110 30" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M85 35C80 38 78 45 82 50" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M92 41C90 46 92 52 98 54" stroke="currentColor" strokeWidth="1.5" fill="none" />
-
-                {/* Right squirrel */}
-                <path
-                  d="M150 35C152 32 155 30 158 32C161 34 160 38 157 40C154 42 151 40 150 35Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                <path d="M157 32C159 28 163 30 164 33" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M152 38C150 40 148 45 150 48" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M155 41C154 44 155 48 158 49" stroke="currentColor" strokeWidth="1.5" fill="none" />
-              </svg>
+            {/* Squirrel images - replace the src with your actual squirrel images */}
+            <div className="relative h-20 w-full mb-4">
+              {squirrelPositions.map((pos, index) => (
+                <div
+                  key={index}
+                  className="absolute"
+                  style={{
+                    top: `${pos.top}%`,
+                    left: `${pos.left}%`,
+                    transform: `rotate(${pos.rotation}deg)`,
+                  }}
+                >
+                  {/* Replace "/placeholder.svg" with your actual squirrel image paths */}
+                  <Image
+                    src={`/bhanu.jpg?height=${pos.size}&width=${pos.size}`}
+                    alt="Squirrel doodle"
+                    width={pos.size}
+                    height={pos.size}
+                    className="object-contain"
+                  />
+                </div>
+              ))}
             </div>
 
             {/* Content */}
