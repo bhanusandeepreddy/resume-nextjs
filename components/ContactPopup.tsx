@@ -26,7 +26,7 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
     return [
       {
         // Left squirrel - smaller to larger size range
-        src: "/squirrel1.jpg",
+        src: "/squirrel1.png",
         top: getRandomBetween(5, 20),
         left: getRandomBetween(5, 20),
         size: getRandomBetween(35, 70), // Much more random size range
@@ -34,7 +34,7 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
       },
       {
         // Middle squirrel - smaller to larger size range
-        src: "/squirrel2.jpg",
+        src: "/squirrel2.png",
         top: getRandomBetween(5, 20),
         left: getRandomBetween(40, 55),
         size: getRandomBetween(35, 70), // Much more random size range
@@ -42,7 +42,7 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
       },
       {
         // Right squirrel - smaller to larger size range
-        src: "/squirrel3.jpg",
+        src: "/squirrel3.png",
         top: getRandomBetween(5, 20),
         left: getRandomBetween(75, 90),
         size: getRandomBetween(35, 70), // Much more random size range
