@@ -25,26 +25,31 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
     })
   }
 
-  // Generate random positions for the squirrels
-  // These will be fixed once the component renders
-  const squirrelPositions = [
+  // Define three different squirrel images with their positions
+  const squirrels = [
     {
-      top: Math.floor(Math.random() * 20) + 5, // 5-25% from top
-      left: Math.floor(Math.random() * 20) + 5, // 5-25% from left
-      size: Math.floor(Math.random() * 20) + 40, // 40-60px
-      rotation: Math.floor(Math.random() * 30) - 15, // -15 to 15 degrees
+      // Left squirrel
+      src: "/squirrel1.jpg", // Using your first squirrel image
+      top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
+      left: Math.floor(Math.random() * 15) + 5, // 5-20% from left
+      size: Math.floor(Math.random() * 15) + 45, // 45-60px
+      rotation: Math.floor(Math.random() * 20) - 10, // -10 to 10 degrees
     },
     {
-      top: Math.floor(Math.random() * 20) + 5, // 5-25% from top
-      left: Math.floor(Math.random() * 20) + 40, // 40-60% from left
-      size: Math.floor(Math.random() * 20) + 40, // 40-60px
-      rotation: Math.floor(Math.random() * 30) - 15, // -15 to 15 degrees
+      // Middle squirrel
+      src: "/squirrel2.jpg", // Using your second squirrel image
+      top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
+      left: Math.floor(Math.random() * 15) + 42.5, // 42.5-57.5% from left (centered)
+      size: Math.floor(Math.random() * 15) + 50, // 50-65px (slightly larger)
+      rotation: Math.floor(Math.random() * 20) - 10, // -10 to 10 degrees
     },
     {
-      top: Math.floor(Math.random() * 20) + 5, // 5-25% from top
-      left: Math.floor(Math.random() * 20) + 75, // 75-95% from left
-      size: Math.floor(Math.random() * 20) + 40, // 40-60px
-      rotation: Math.floor(Math.random() * 30) - 15, // -15 to 15 degrees
+      // Right squirrel
+      src: "/squirrel3.jpg", // Using your third squirrel image
+      top: Math.floor(Math.random() * 15) + 5, // 5-20% from top
+      left: Math.floor(Math.random() * 15) + 75, // 75-90% from left
+      size: Math.floor(Math.random() * 15) + 45, // 45-60px
+      rotation: Math.floor(Math.random() * 20) - 10, // -10 to 10 degrees
     },
   ]
 
@@ -64,24 +69,23 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
               <span className="sr-only">{language === "en" ? "Close" : "Schließen"}</span>
             </Button>
 
-            {/* Squirrel images - replace the src with your actual squirrel images */}
-            <div className="relative h-20 w-full mb-4">
-              {squirrelPositions.map((pos, index) => (
+            {/* Squirrel images using your jpg files */}
+            <div className="relative h-24 w-full mb-4">
+              {squirrels.map((squirrel, index) => (
                 <div
                   key={index}
                   className="absolute"
                   style={{
-                    top: `${pos.top}%`,
-                    left: `${pos.left}%`,
-                    transform: `rotate(${pos.rotation}deg)`,
+                    top: `${squirrel.top}%`,
+                    left: `${squirrel.left}%`,
+                    transform: `rotate(${squirrel.rotation}deg)`,
                   }}
                 >
-                  {/* Replace "/placeholder.svg" with your actual squirrel image paths */}
                   <Image
-                    src={`/bhanu.jpg?height=${pos.size}&width=${pos.size}`}
-                    alt="Squirrel doodle"
-                    width={pos.size}
-                    height={pos.size}
+                    src={squirrel.src || "/placeholder.svg"}
+                    alt={`Squirrel doodle ${index + 1}`}
+                    width={squirrel.size}
+                    height={squirrel.size}
                     className="object-contain"
                   />
                 </div>
