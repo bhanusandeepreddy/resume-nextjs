@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { InterestPopup } from '@/components/InterestPopup'
+import { ContactPopup } from '@/components/ContactPopup'
 import { Toaster } from "@/components/ui/toaster"
 
 const translations = {
