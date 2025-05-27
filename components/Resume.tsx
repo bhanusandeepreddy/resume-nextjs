@@ -19,7 +19,7 @@ import { Toaster } from "@/components/ui/toaster"
 const translations = {
   en: {
     name: "Bhanu Sandeep Reddy Chirra",
-    title: "Verification and Validation Test Engineer",
+    title: "V&V Engineer - Business Analyst",
     experience: "Experience",
     education: "Education",
     projects: "Projects",
@@ -47,7 +47,7 @@ const translations = {
   },
   de: {
     name: "Bhanu Sandeep Reddy Chirra",
-    title: "Verifizierungs- und Validierungs Testingenieur",
+    title: "V&V Ingenieur - Business Analyst",
     experience: "Erfahrung",
     education: "Ausbildung",
     projects: "Projekte",
