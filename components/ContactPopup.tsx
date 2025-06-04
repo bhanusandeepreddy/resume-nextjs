@@ -4,9 +4,12 @@ import { useState, useEffect } from "react"
 import { X, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
+import Image from "next/image"
 
 export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
   const [isVisible, setIsVisible] = useState(false)
+  // Generate random sizes and positions once when component mounts
+  const [squirrels] = useState(() => generateRandomSquirrels())
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -15,6 +18,38 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
 
     return () => clearTimeout(timer)
   }, [])
+
+  function generateRandomSquirrels() {
+    // Helper function to get a random number between min and max
+    const getRandomBetween = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min
+
+    return [
+      {
+        // Left squirrel - smaller to larger size range
+        src: "/squirrel1.png",
+        top: getRandomBetween(5, 20),
+        left: getRandomBetween(5, 20),
+        size: getRandomBetween(35, 70), // Much more random size range
+        rotation: getRandomBetween(-15, 15),
+      },
+      {
+        // Middle squirrel - smaller to larger size range
+        src: "/squirrel2.png",
+        top: getRandomBetween(5, 20),
+        left: getRandomBetween(40, 55),
+        size: getRandomBetween(35, 70), // Much more random size range
+        rotation: getRandomBetween(-15, 15),
+      },
+      {
+        // Right squirrel - smaller to larger size range
+        src: "/squirrel3.png",
+        top: getRandomBetween(5, 20),
+        left: getRandomBetween(75, 90),
+        size: getRandomBetween(35, 70), // Much more random size range
+        rotation: getRandomBetween(-15, 15),
+      },
+    ]
+  }
 
   const handleEmailClick = () => {
     toast({
@@ -33,56 +68,34 @@ export function ContactPopup({ language = "en" }: { language?: "en" | "de" }) {
             <Button
               variant="outline"
               size="icon"
-              className="absolute top-3 right-3 rounded-full h-8 w-8 p-0"
+              className="absolute top-3 right-3 rounded-full h-8 w-8 p-0 z-10"
               onClick={() => setIsVisible(false)}
             >
               <X className="h-4 w-4" />
               <span className="sr-only">{language === "en" ? "Close" : "Schließen"}</span>
             </Button>
 
-            {/* Squirrel doodles */}
-            <div className="flex justify-center mb-4">
-              <svg
-                width="200"
-                height="60"
-                viewBox="0 0 200 60"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-[#5d5a55]"
-              >
-                {/* Left squirrel */}
-                <path
-                  d="M40 35C42 32 45 30 48 32C51 34 50 38 47 40C44 42 41 40 40 35Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                <path d="M47 32C49 28 53 30 54 33" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M42 38C40 40 38 45 40 48" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M45 41C44 44 45 48 48 49" stroke="currentColor" strokeWidth="1.5" fill="none" />
-
-                {/* Middle squirrel */}
-                <path
-                  d="M90 20C95 18 102 20 105 25C108 30 105 38 98 40C91 42 84 38 82 30C80 22 85 15 90 20Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                <path d="M103 25C108 20 112 25 110 30" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M85 35C80 38 78 45 82 50" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M92 41C90 46 92 52 98 54" stroke="currentColor" strokeWidth="1.5" fill="none" />
-
-                {/* Right squirrel */}
-                <path
-                  d="M150 35C152 32 155 30 158 32C161 34 160 38 157 40C154 42 151 40 150 35Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-                <path d="M157 32C159 28 163 30 164 33" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M152 38C150 40 148 45 150 48" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M155 41C154 44 155 48 158 49" stroke="currentColor" strokeWidth="1.5" fill="none" />
-              </svg>
+            {/* Squirrel images with random sizes */}
+            <div className="relative h-28 w-full mb-4">
+              {squirrels.map((squirrel, index) => (
+                <div
+                  key={index}
+                  className="absolute"
+                  style={{
+                    top: `${squirrel.top}%`,
+                    left: `${squirrel.left}%`,
+                    transform: `rotate(${squirrel.rotation}deg)`,
+                  }}
+                >
+                  <Image
+                    src={squirrel.src || "/placeholder.svg"}
+                    alt={`Squirrel doodle ${index + 1}`}
+                    width={squirrel.size}
+                    height={squirrel.size}
+                    className="object-contain"
+                  />
+                </div>
+              ))}
             </div>
 
             {/* Content */}
